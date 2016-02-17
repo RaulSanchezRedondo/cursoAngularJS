@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="cursoAngular">
+    <head>
+        <meta charset="utf-8">
+        <title>Directivas en Angular</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    </head>
+    <body>
+        <h1>Directiva ng-controller</h1>
+        
+        <div ng-controller="controlador1">
+            <h2>Texto Controlador: {{texto}}</h2>
+        </div>
+        
+         <div>
+            <h2>Texto que no llega al controlador: {{texto}}</h2>
+        </div>
+        
+        <script>
+            var miAplicación = angular.module("cursoAngular", [])
+            miAplicación.controller ('controlador1', ['$scope', function($scope){
+                $scope.texto = "Texto enviado al controlador !!!";
+            }])
+        </script>       
+        
+    </body>
+</html>
