@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="lista">
+    <head>
+        <meta charset="utf-8">
+        <title>Directivas en AngularJS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    </head>
+    <body>
+      <h1>ng-repeat</h1>
+        
+        <div ng-controller="controlador1">
+           <p ng-repeat="user in profesiones |  orderBy: 'nombre'">
+                {{user.nombre}} - {{user.profesion}}
+            </p>
+        </div>
+    
+        <script>
+            var ejemplo = angular.module("lista", []);
+            ejemplo.controller("controlador1", ["$scope", function($scope){
+                
+            $scope.profesiones = [
+                {nombre: "Fernando",profesion: "Carpintero"},
+                {nombre: "Juan",    profesion: "Zapatero"},
+                {nombre: "Maria",   profesion: "Profesora"},
+                {nombre: "Andrés",  profesion: "Taxista"},
+                {nombre: "Arturo",  profesion: "Arquitecto"},
+                {nombre: "Elena",   profesion: "Enfermera"},
+                {nombre: "Alberto", profesion: "Doctor"},
+                {nombre: "Alicia",  profesion: "Psicologa"}
+            ];
+            }]);
+        </script>       
+        
+    </body>
+</html>
