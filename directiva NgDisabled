@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="parking">
+<head>
+<title>[Packt] Parking</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script>
+var parking = angular.module("parking", []);
+parking.controller("parkingCtrl", function ($scope) {
+$scope.appTitle = "Parking";
+$scope.cars = [];
+$scope.park = function (car) {
+car.entrada = new Date();
+$scope.cars.push(car);
+delete $scope.car;
+};
+});
+</script>
+</head>
+<body ng-controller="parkingCtrl">
+<h3 ng-bind="appTitle"></h3>
+<table>
+<thead>
+<tr>
+<th>Matricula/</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="car in cars">
+<td><span ng-bind="car.matricula"></span></td>
+<td><span ng-bind="car.entrada"></span></td>
+</tr>
+</tbody>
+</table>
+<input type="text" ng-model="car.matricula" placeholder="Matricula"/>
+<button ng-click="park(car)" ng-disabled="!car.matricula">Parking</button>
+</body>
+</html>
