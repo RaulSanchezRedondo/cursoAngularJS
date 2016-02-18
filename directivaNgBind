@@ -1,0 +1,16 @@
+<!doctype html>
+<html ng-app="parking">
+<head>
+<title>Aparcamientos</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script>
+var parking = angular.module("parking", []);
+parking.controller("parkingCtrl", function ($scope) {
+$scope.appTitulo = "Aparcamientos";
+});
+</script>
+</head>
+<body ng-controller="parkingCtrl">
+<h3 ng-bind="appTitulo"></h3>
+</body>
+</html>
