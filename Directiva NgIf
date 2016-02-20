@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+ <script>
+var app = angular.module("app", []);
+   
+app.controller("PruebaControlador", function($scope) {
+  $scope.marca="Seat";
+  $scope.showMarca=true;
+   
+  $scope.modelo={
+    modeloAuto:"Ibiza",
+    showModeloAuto:true 
+  }
+  
+});
+
+</script>
+</head>
+<body ng-controller="PruebaControlador">
+<input type="checkbox" ng-model="showMarca">Mostrar Marca
+<br>
+
+<div ng-include="menuHtml.html"></div>
+
+<div ng-if="showMarca">
+  Nombre: <input ng-model="marca" >
+  <br>
+  El valor de "marca" en el $scope del "ng-if" es : {{marca}}
+</div>
+El valor de "marca" en el $scope del "Controlador" es : <strong>{{marca}}</strong>
+ <hr>
+<input type="checkbox" ng-model="modelo.showModeloAuto">Mostrar Modelo
+<br>
+<div ng-if="modelo.showModeloAuto">
+  Modelo: <input ng-model="modelo.modeloAuto" >
+ <br>
+  El valor de "modelo" en el $scope del "ng-if" es : {{modelo.modeloAuto}}
+</div>
+ El valor de "modelo" en el $scope del "Controlador" es : {{modelo.modeloAuto}}
+</body>
+</html>
