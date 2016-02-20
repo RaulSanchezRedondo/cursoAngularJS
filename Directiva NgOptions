@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="parking">
+<head>
+<title>Parking</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script>
+var parking = angular.module("parking", []);
+parking.controller("parkingCtrl", function ($scope) {
+$scope.appTitle = "Aparcamientos";
+$scope.autos = [];
+$scope.colors = ["Blanco", "Negro", "Azul", "Rojo",
+"Plateado"];
+$scope.park = function (car) {
+car.entrance = new Date();
+$scope.autos.push(car);
+delete $scope.car;
+};
+});
+</script>
+<style>
+.selected {
+background-color: #FAFAD2;
+}
+</style>
+</head>
+<body ng-controller="parkingCtrl">
+<h3 ng-bind="appTitle"></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Matricula</th>
+<th>Color</th>
+<th>Entrada</th>
+</tr>
+</th> 
+<tbody>
+<tr ng-repeat="car in autos">
+<td><input type="checkbox" ngmodel="car.selected"/></td>
+<td><span ng-bind="car.matricula"></span></td>
+<td><span ng-bind="car.color" ng-style="{color: car.color}"></span></td>
+<td><span ng-bind="car.entrance"></span></td>
+</tr>
+</tbody>
+</table>
+<input type="text" ng-model="car.matricula" placeholder="Matricula"/>
+<select ng-model="car.color" ng-options="color for color in colors">Selecciona un color</select>
+<button ng-click="park(car)">Guardar</button>
+</body>
+</html>
