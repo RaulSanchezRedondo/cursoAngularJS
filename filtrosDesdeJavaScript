@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<title>FILTROS JAVASCRIPT</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+  <script>
+
+   var app=angular.module("app",[]);
+  
+   app.controller("MiController",['$scope','$filter',function($scope,$filter) {
+
+   var filtroCurrency=$filter("currency");
+
+   $scope.importeFormateado=filtroCurrency(2.5231);
+  
+   var filtroDate=$filter("date");
+  
+  $scope.fechaFormateada=filtroDate(new Date(),"fullDate");
+
+}]);
+</script>
+  <body ng-controller="MiController">
+
+    Importe formateado:{{importeFormateado}}
+    
+    <br>
+    
+    Fecha formateada: {{fechaFormateada}}
+
+  </body>
+ 
+</html>
