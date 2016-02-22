@@ -1,0 +1,85 @@
+<!DOCTYPE  html>
+<html lang="es" ng-app="app">
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script type="text/javascript">
+
+    var app = angular.module("app", []);
+ 
+    app.controller("MiController", function($scope){
+    $scope.usuarios = [
+        {
+            nombre : "raul sanchez"
+        },
+        {
+            nombre : "cristina ballestero"
+        },
+        {
+            nombre : "cristian azara"
+        }
+    ]
+})
+//filtro para poner la primera letra en mayúsculas
+app.filter("mayusculas1", function(){
+    return function(text) {
+        if(text != null){
+            return text.substring(0,1).toUpperCase()+text.substring(1);
+        }
+    }
+})
+ 
+//filtro para poner todo el texto en mayúsculas
+app.filter("mayusculas2", function(){
+    return function(text){
+        if(text != null){
+            return text.toUpperCase();
+        }
+    }
+})
+ 
+//filtro para poner puntos suspensivos a partir de x carácteres
+app.filter("puntosSuspensivos", function(){
+    return function(text,max){
+        if(text != null){
+            if(text.length > max){
+                return text.substring(0,max) + "...";
+            }
+        }
+    }
+})
+</script>
+	<body>
+		<div class="row" ng-controller="MiController">
+ 
+            <h1 class="subheader">Filtro Sencillo en Angularjs</h1>
+            <ul class="panel callout radius">
+                <!--ordenamos descendentemente pasando como tercer parámetro true en
+                la directiva ng-repeat-->
+                <li ng-repeat="user in usuarios | orderBy:'nombre':true">
+                    <p>Nombre: {{ user.nombre | mayusculas1 }}</p>
+                </li>
+            </ul>
+ 
+            <h1 class="subheader">Filtro mayusculas2 en Angularjs</h1>
+            <ul class="panel callout radius">
+                <li ng-repeat="user in usuarios">
+                    <!--utilizamos el filtro mayusculas2 que hemos creado-->
+                    <p>Nombre: {{ user.nombre | mayusculas2 }}</p>
+                </li>
+            </ul>
+ 
+            <h1 class="subheader">Filtro puntosSuspensivos en Angularjs</h1>
+            <ul class="panel callout radius">
+                <li ng-repeat="user in usuarios">
+                    <!--usamos el filtro que hemos creado puntosSuspensivos y le
+                    decimos que a los 5 carácteres nos ponga puntos suspensivos,
+                    aparte también usamos el filtro capitalize-->
+                    <p>Nombre: {{ user.nombre | puntosSuspensivos : 5 | mayusculas1 }}</p>
+                </li>
+            </ul>
+ 
+		</div>
+	</body>
+</html>
