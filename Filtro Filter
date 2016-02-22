@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app ng-controller="AppCtl">
+	<head>
+		<meta charset="utf-8">
+		<title>Contactos</title>
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script type="text/javascript">
+	function AppCtl($scope) {
+	$scope.contacts = [
+		{
+			name: 'Raúl Sánchez',
+			phone: '12345',
+			email: 'xxx@gmail.com'
+		},
+		{
+			name: 'Cristina Ballestero',
+			phone: '213124',
+			email: 'yyy@gmail.com'
+		},
+		{
+			name: 'Marimar Luque',
+			phone: '56789',
+			email: 'zzz@gmail.com'
+		}
+	];
+}
+</script>
+	</head>
+	<body>
+		<label>Buscar:</label>
+		<br>
+		<input type="text" ng-model="search">
+ 
+		<ul>
+		    <li ng-repeat="contact in contacts | filter:search">
+		        {{contact.name}} - {{contact.phone}} - {{contact.email}}
+		    </li>
+		</ul>
+ 
+	</body>
+</html>
