@@ -1,1 +1,59 @@
 
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<title>NUMBER</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script>
+     var app = angular.module("app", []);
+     app.controller("PruebaController", ["$scope",function($scope) {
+     $scope.supermercado = [{
+      codArticulo: "02",
+      nombre: "Manzanas"
+    }, {
+      codArticulo: "03",
+      nombre: "Peras"
+    }, {
+      codArticulo: "04",
+      nombre: "Limones"
+    }, {
+      codArticulo: "05",
+      nombre: "Melocotones"
+    }, {
+      codArticulo: "06",
+      nombre: "Naranjas"
+    }, {
+      codArticulo: "07",
+      nombre: "Uvas"
+    }, {
+      codArticulo: "08",
+      nombre: "Mandarinas"
+    }, {
+      codArticulo: "09",
+      nombre: "Kiwi"
+    }, {
+      codArticulo: "10",
+      nombre: "Cerezas"
+    }, ];
+  }
+]);
+
+   </script>
+</head>  
+<body ng-controller="PruebaController">
+<table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="frutas in supermercado | orderBy:'nombre' | limitTo:6">
+        <td>{{frutas.codArticulo}}</td>
+        <td>{{frutas.nombre}}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
