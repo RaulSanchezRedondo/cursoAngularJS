@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+ <meta charset="utf-8">
+ <title>Expresiones en AngularJS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+</head>
+<body>
+ <h1>Uso de expresiones con AngularJS</h1>
+ <p>{{"3 + 3 ="}} {{ 3 + 3 }}</p>
+ <p>{{"8 - 4 ="}} {{ 8 - 4 }}</p>
+ <p>8 * 4 = {{ 8 * 4 }}</p>
+ <p>8 / 4 = {{ 8 / 4 }}</p>
+ <p>(8*3)/2 = {{ (8 * 3) / 2 }}</p>
+</body>
+</html>
